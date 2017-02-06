@@ -8,11 +8,15 @@
 
     <br>
 
-    <ul>
-      Interests:
+
+      Movies for Search '{{$search}}':
       @foreach($dvds as $dvd)
-        <li>{{ $dvd->title }}</li>
+        <ul>
+            <li><b>{{ $dvd->title }}</b></li>
+            <li>{{ $dvd->rating_name}}</li>
+            <li>{{ $dvd->genre_name}}</li>
+        </ul>
       @endforeach
-    </ul>
+
   </body>
 </html>

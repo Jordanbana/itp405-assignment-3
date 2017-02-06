@@ -20,8 +20,11 @@ class SearchController extends Controller {
         // }
 
         $dvds = DB::table('dvds')
-            ->select('title')
+            ->select('title', 'rating_name', 'genre_name')
+            ->join('ratings', 'dvds.rating_id', '=', 'ratings.id')
+            ->join('genres', 'dvds.genre_id', '=', 'genres.id')
             ->where('title', 'LIKE', "%$search%")
+            ->orderBy('title')
             ->get();
 
         return view('search-results', [
